@@ -15,6 +15,8 @@ class Application {
         String ciphertext = encoder.encode(plaintext.toUpperCase());
         String decoded = encoder.decode(ciphertext);
 
-        System.out.printf("plaintext: %s%n" + "ciphertext: %s%n" + "decoded: %s (uppercase)", plaintext, ciphertext, decoded);
+        System.out.printf("plaintext: %s%n"
+                + "ciphertext: %s%n"
+                + "decoded: %s (uppercase)", plaintext, ciphertext, decoded);
     }
 }

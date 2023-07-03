@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class SmsEncoder {
 
-    // Technically this will not work for code points outside the BMP, but we don't handle those anyway.
+
     private static final Map<Character, String> charToCode = new HashMap<>();
 
     static {
