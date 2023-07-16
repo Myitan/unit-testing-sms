@@ -43,7 +43,7 @@ Example encoded input sequences and their corresponding decoded messages:
 `SmsEncoder` class defines two methods:
 
 - `String encode(String plaintext)` - encodes the text passed as parameter;
-   throws `IllegalArgumentException` if the text contains a character tha can not be coded (e.g. 'é').
+   throws `IllegalArgumentException` if the text contains a character that can not be coded (e.g. 'é').
 - `String decode(String ciphertext)` - decodes the SMS keycodes;
   throws `IllegalArgumentException` if the text contains characters that can not be recognized as keys.
 
@@ -54,7 +54,7 @@ Your task is to write unit test for the `SmsEncoder` methods. Please cover the f
 - Encoding of character that is mapped to double key ('b' -> 22)
 - Encoding of multiple characters
 - Encoding of multiple characters that are mapped to the same key, so requires space in the encoded text
-- Invalid input
 - Empty input
+- Invalid input
 
 Please write similar tests for the decode method.
