@@ -14,12 +14,8 @@ The letter selection is committed when one of the following happens:
 
 See the table of standard keypad below.
 
-|          |         |          |
-|----------|---------|----------|
-| 1        | 2 (ABC) | 3 (DEF)  |
-| 4 (GHI)  | 5 (JKL) | 6 (MNO)  |
-| 7 (PQRS) | 8 (TUV) | 9 (WXYZ) |
-| *        | 0 (' ') | #        |
+![](https://raw.githubusercontent.com/epam-java-cre/exercise-specification-images/main/unit-testing-sms/phone-keypad.png)
+
 
 ## Examples
 
