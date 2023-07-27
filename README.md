@@ -32,14 +32,15 @@ Example encoded input sequences and their corresponding decoded messages:
     Please enter plaintext: java
     plaintext: java
     ciphertext: 528882
-    decoded: JAVA (uppercase)
+    decoded: java
 
 ## Implementation 
 
 `SmsEncoder` class defines two methods:
 
 - `String encode(String plaintext)` - encodes the text passed as parameter;
-   throws `IllegalArgumentException` if the text contains a character that can not be coded (e.g. 'é').
+   throws `IllegalArgumentException` if the text contains a character that can not be coded.
+   Valid characters are English lowercase characters ('a'-'z'). Invalid character example: 'é'.
 - `String decode(String ciphertext)` - decodes the SMS keycodes;
   throws `IllegalArgumentException` if the text contains characters that can not be recognized as keys.
 

@@ -12,11 +12,11 @@ class Application {
 
         String plaintext = scanner.nextLine();
 
-        String ciphertext = encoder.encode(plaintext.toUpperCase());
+        String ciphertext = encoder.encode(plaintext);
         String decoded = encoder.decode(ciphertext);
 
         System.out.printf("plaintext: %s%n"
                 + "ciphertext: %s%n"
-                + "decoded: %s (uppercase)", plaintext, ciphertext, decoded);
+                + "decoded: %s", plaintext, ciphertext, decoded);
     }
 }
