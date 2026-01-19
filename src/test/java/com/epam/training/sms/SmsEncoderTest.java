@@ -16,7 +16,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing encode of character that is mapped to single key ('a' -> 2)")
     @Test
-    public void encodeOneChar() {
+    public void testEncodeOfOneCharThatIsMappedToSingleKey() {
         String input = "a";
         String expected = "2";
         String actual = smsEncoder.encode(input);
@@ -26,7 +26,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing encode of character that is mapped to double key ('b' -> 22)")
     @Test
-    public void encodeTwoChar(){
+    public void testEncodeOfTwoCharThatIsMappedToDoubleKey(){
         String input = "b";
         String expected = "22";
         String actual = smsEncoder.encode(input);
@@ -36,7 +36,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing encode of characters that are mapped to the same key ('bb' -> 22 22) ")
     @Test
-    public void encodeTwoIdenticalCharacters(){
+    public void testEncodeOfTwoIdenticalCharactersThatAreMappedToTheSameKey(){
         String input = "bb";
         String expected = "22 22";
         String actual = smsEncoder.encode(input);
@@ -46,7 +46,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing encode of multiple characters")
     @Test
-    public void encodeMultipleChars(){
+    public void testEncodeOfMultipleCharsThatBelongToDiffrentKeys(){
         String input = "ad";
         String expected = "23";
         String actual = smsEncoder.encode(input);
@@ -56,22 +56,23 @@ class SmsEncoderTest {
 
     @DisplayName("Testing encode of multiple characters that are mapped to the same key, so requires space in the encoded text")
     @Test
-    public void encodeManyCharWithSpace(){
+    public void testEncodeManyCharsThatAreMappedToTheSameKeySeparatedWithSpace(){
         String input = "n o m6";
         String expected = "66066606 6666";
         String actual = smsEncoder.encode(input);
 
         assertEquals(expected,actual,"Characters do not match");
     }
+
     @DisplayName("Testing encode of empty input")
     @Test
-    public void encodeEmptyInput(){
+    public void testEncodeOfEmptyInput(){
         assertEquals("",smsEncoder.encode(""));
     }
 
     @DisplayName("Testing encode of invalid input")
     @Test
-    public void encodeInvalidInput(){
+    public void testEncodeOfInvalidInput(){
         String input = "Ą";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             smsEncoder.encode(input);
@@ -83,7 +84,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing decode of character that is mapped to single key (2 -> 'a') ")
     @Test
-    public void decodeOneChar() {
+    public void testDecodeOfOneCharThatIsMappedToSingleKey() {
         String input = "2";
         String expected = "a";
         String actual = smsEncoder.decode(input);
@@ -93,7 +94,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing decode of character that is mapped to double key (22 -> 'b')")
     @Test
-    public void decodeTwoChar(){
+    public void testDecodeOfTwoCharThatIsMappedToDoubleKey(){
         String input = "22";
         String expected = "b";
         String actual = smsEncoder.decode(input);
@@ -103,7 +104,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing decode of characters that are mapped to the same key ('bb' -> 22 22) ")
     @Test
-    public void decodeTwoIdenticalCharacters(){
+    public void testDecodeOfTwoIdenticalCharactersThatAreMappedToTheSameKey(){
         String input = "22 22";
         String expected = "bb";
         String actual = smsEncoder.decode(input);
@@ -113,7 +114,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing decode of multiple characters")
     @Test
-    public void decodeMultipleChars(){
+    public void testDecodeOfMultipleChars(){
         String input = "23";
         String expected = "ad";
         String actual = smsEncoder.decode(input);
@@ -123,7 +124,7 @@ class SmsEncoderTest {
 
     @DisplayName("Testing decode of multiple characters that are mapped to the same key, so requires space in the encoded text")
     @Test
-    public void decodeManyCharWithSpace(){
+    public void testDecodeOfManyCharsThatAreMappedToTheSameKeySeparatedWithSpace(){
         String input = "66066606 6666";
         String expected = "n o m6";
         String actual = smsEncoder.decode(input);
@@ -132,19 +133,19 @@ class SmsEncoderTest {
     }
     @DisplayName("Testing decode of empty input")
     @Test
-    public void decodeEmptyInput(){
+    public void testDecodeOfEmptyInput(){
         assertEquals("",smsEncoder.decode(""));
     }
 
     @DisplayName("Testing decode of invalid input")
     @Test
-    public void decodeInvalidInput(){
+    public void testDecodeOfInvalidInput(){
         String input = "14829ag95842";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             smsEncoder.decode(input);
         });
 
         assertTrue(exception.getMessage().contains("Ciphertext must match"),
-                "Test");
+                "Error: trying to decode invalid input");
     }
 }
